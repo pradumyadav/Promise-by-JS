@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>Q1> Write one example explaing how you can write a callback function. </h4>
+    <p>function work(callback) {</p>
+        <p> let intu = 5*6;</p>
+        <p>>callback(intu);</p>
+        <p> }</p>
+      <p>function callbackFunction(intu) {</p>
+    <p> console.log(`Output ${intu}`);</p>
+  <p> }</p>
+  <p>work(callbackFunction); </p>
+
+
+  <h4>Q2> Write a callback to print numbers from 1 to 7 in which 1 should be priented after 1 sec 2 should be priented after 2 sec,3 should br printed after 3 sec and so on.</h4>
+  <p>function printNumbersWithDelay(num, delay, callback) {</p>
+    <p> let counter = 1;</p>
+    <p>const interval = setInterval(() => {</p>
+        <p>console.log(counter);</p>
+      <p>counter++;</p>
+      <p>if (counter > num) {</p>
+        <p>clearInterval(interval);</p>
+        <p> callback();</p>
+        <p> }</p>
+      <p> }, delay);</p>
+    <p>}</p>
+  <p> function callbackFunction() {</p>
+    <p> console.log("All done!");</p>
+    <p>}</p>
+  <p>printNumbersWithDelay(7, 1000, callbackFunction);      </p>
+  <h4>Q3>Write the promise function to print number from 1 to 7, in which1 should br priented after 1 sec,2 should be priented after 2 second 3 should be priented after 3 second and so on.</h4>
+  <p>function printNumbersWithDelay(num, delay) {</p>
+    <p> let counter = 1;</p>
+    <p> return new Promise((resolve, reject) => {</p>
+        <p> const interval = setInterval(() => {</p>
+        <p>console.log(counter);</p>
+        <p>  counter++;</p>
+        <p>if (counter > num) {</p>
+            <p> clearInterval(interval);</p>
+          <p>  resolve();</p>
+          <p>  }</p>
+        <p> }, delay);</p>
+      <p> });</p>
+    <p>}</p>
+  <p> printNumbersWithDelay(7, 1000)</p>
+  <p> .then(() => {</p>
+        <p> console.log("All done!");</p>
+      <p> })</p>
+    <p>.catch((error) => {</p>
+        <p> console.error(error);</p>
+      <p>}); </p>
+    <h4>Q4> Crete a promise function accepting an argument if yes is passed to the function then it should go to resolve state and print promise resolve and if nothing is passed<br>then it should go to reject the state and catch the error and print promise rejected </h4>
+    <p>function func(txt) {</p>
+        <p> return new Promise((resolve, reject) => {</p>
+            <p> if (txt === 'yes') {</p>
+            <p>   resolve("Promise resolved");</p>
+            <p> } else {</p>
+            <p>  reject("Promise rejected");</p>
+            <p>  }</p>
+          <p> });</p>
+        <p>}</p>
+            <p> func('yes')</p>
+      <p> .then((result) => console.log(result))</p>
+        <p></p> .catch((err) => console.log(err));</p>
+        <h4>Q5> Create exampes to explain callback function</h4>
+        <p><b>normal callback function</b></p>
+        <p>function greet(name, callback) {</p>
+            <p>  console.log(`Hello, ${name}!`);</p>
+            <p>  callback();</p>
+            <p> }</p>
+          
+          <p>  function sayGoodbye() {</p>
+            <p>   console.log("Goodbye!");</p>
+            <p> }</p>
+          <p>greet("Hy", sayGoodbye)</p>
+
+
+          <p><b>2. callback function with argument. </b></p>
+          <p> function multiply(a, b, callback) {</p>
+            <p> const result = a * b;</p>
+        <p>callback(result);</p>
+        <p> }</p>
+          
+          <p>function logResult(result) {</p>
+            <p> console.log(`The result is ${result}.`);</p>
+            <p>} </p>
+          <p>multiply(3, 4, logResult);</p>
+          <p><b>3. callback function with anonymous function syntax.</b></p>
+
+          <p> function doSomething(callback) {</p>
+            <p> console.log("Doing something...");</p>
+            <p> callback();</p>
+            <p>}</p>
+          <p>doSomething(function() {</p>
+        <p> console.log("Done!");</p>
+            <p>}); </p>
+          <h4>Q6> Create example to explain callback hell function</h4>
+          <p>getUser(userId, (user) => {</p>
+            <p> getPermissions(user, (permissions) => {</p>
+                <p> if (permissions.canAccessDashboard) {</p>
+                <p>  getDashboardData(user, (dashboardData) => {</p>
+                    <p>    renderDashboard(dashboardData);</p>
+                  <p>   });</p>
+                <p> } else {</p>
+                <p> alert("You don't have permission to access the dashboard.");</p>
+                <p> }</p>
+              <p>});</p>
+            <p>});  </p>
+          <h4>Q7>Create examples to explain promise function. </h4>
+          <p><b>1. Resolving a Promise</b></p>
+          <p>const promise = new Promise((resolve, reject) => {</p>
+            <p>  setTimeout(() => {</p>
+                <p>    resolve("Task completed successfully!");</p>
+                    <p>  }, 3000);</p>
+            <p> });</p>
+          <p>  promise.then((result) => {</p>
+            <p>   console.log(result);</p>
+            <p> });</p>
+
+          <p><b>2. Rejecting a Promise. </b></p>
+          <p>const promise = new Promise((resolve, reject) => {</p>
+            <p> setTimeout(() => {</p>
+                <p>   reject("Task failed!");</p>
+              <p> }, 4000);</p>
+            <p>  }); </p>
+          <p>  promise.catch((error) => {</p>
+            <p>  console.log(error);</p>
+            <p>});</p>
+          <p><b>3.Chaining Promises.</b></p>
+          <p>const promise1 = new Promise((resolve, reject) => {</p>
+            <p> setTimeout(() => {</p>
+                <p>   resolve("Task 1 completed successfully!");</p>
+              <p>  }, 2000);</p>
+            <p> });  </p>
+          <p> const promise2 = new Promise((resolve, reject) => {</p>
+            <p> setTimeout(() => {</p>
+                <p> resolve("Task 2 completed successfully!");</p>
+              <p> }, 6000);</p>
+            <p>}); </p>
+          <p> promise1.then((result) => {</p>
+            <p> console.log(result);</p>
+            <p> return promise2;</p>
+            <p> }).then((result) => {</p>
+            <p>  console.log(result);</p>
+            <p>}); </p>
+          <h4>Q8> .Create examples to explain async await function.</h4>
+
+          <p><b>1. Resolving a Promise with async/await.</b></p>
+          <p>async function myFunction() {</p>
+            <p> const result = await new Promise((resolve) => {</p>
+                <p> setTimeout(() => {</p>
+                <p>  resolve("Task completed successfully!");</p>
+                <p>  }, 3000);</p>
+              <p> });</p>
+        <p> console.log(result);</p>
+          <p> }</p>
+          <p>myFunction();</p>
+          <p><b>2. Handling Promise rejection with async/await.</b></p>
+          <p> async function myFunction() {</p>
+            <p> try {</p>
+                <p> const result = await new Promise((resolve, reject) => {</p>
+                <p> setTimeout(() => {</p>
+                    <p>   reject("Task failed!");</p>
+                  <p>  }, 3000);</p>
+                <p>});</p>
+              <p> console.log(result);</p>
+              <p> } catch (error) {</p>
+                <p> console.log(error);</p>
+              <p> }</p>
+            <p>}</p>
+          <p> myFunction();</p>
+           <p><b>3.  Chaining Promises with async/await</b></p>
+           <p>async function myFunction() {</p>
+            <p> try {</p>
+                <p> const result1 = await new Promise((resolve) => {</p>
+                <p> setTimeout(() => {</p>
+                    <p> resolve("Task 1 completed successfully!");</p>
+                  <p>  }, 3000);</p>
+                <p> });</p>
+              <p> console.log(result1);</p>
+              <p> const result2 = await new Promise((resolve) => {</p>
+                <p> setTimeout(() => {</p>
+                    <p> resolve("Task 2 completed successfully!");</p>
+                  <p>  }, 5000);</p>
+                <p> });</p>
+              <p> console.log(result2);</p>
+              <p> } catch (error) {</p>
+                <p>  console.log(error);</p>
+              <p>   }</p>
+            <p> }</p>
+          <p> myFunction();    </p>
+          <h4>Q9> Create examples to explain promise.all function.</h4>
+          <p><b>1.  Basic usage of Promise.all()</b></p>
+          <p> const promise1 = Promise.resolve(1);</p>
+            <p>  const promise2 = Promise.resolve(2);</p>
+            <p> const promise3 = Promise.resolve(3);</p>
+            <p>  Promise.all([promise1, promise2, promise3])</p>
+            <p>  .then(values => console.log(values))</p>
+            <p> .catch(error => console.log(error));</p>
+            <p><b>2. Using Promise.all() with mixed Promises.</b></p>
+            <p> const promise1 = Promise.resolve(1);</p>
+                <p>  const promise2 = Promise.reject('Error');</p>
+                <p> const promise3 = Promise.resolve(3);</p>
+                <p> Promise.all([promise1, promise2, promise3])</p>
+                <p> .then(values => console.log(values))</p>
+                <p>.catch(error => console.log(error));</p>
+
+
+
+
+
+
+               
+</body>
+</html>
